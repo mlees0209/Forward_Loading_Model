@@ -9,6 +9,7 @@ It requires three file types to have been produced by other, GMT scripts:
     MASSESFILE.txt : a file containing x,y,SWE discretised according to how you want input snow discretised.
     dXX.tmp.float : a lot of these files, where XX is the id of the snow mass in question, and the files contain x,y,DIST discretised according to the output.
     d0.tmp.txt : this contains the coordinates of the output model grid.
+    SimName : this variable the pathname to where everything is contained.
 
 @author: mlees
 """
@@ -22,6 +23,7 @@ alpha=float(sys.argv[1]) # The first argument should be disk diameter; or equiva
 lamda=float(sys.argv[2]) # The second argument should be the Lame parameter of the substrate
 mu=float(sys.argv[3]) # The third argument should be the shear modulus of the substrate
 massesfile=str(sys.argv[4])
+SimName=str(sys.argv[5])
 
 def calc_G(lamda, mu, alpha, r):
     ''' 
@@ -56,7 +58,7 @@ g = 9.81 # gravity acceleration
 alpha = 0.5* alpha*10**3 # convert to metres
 rho_water = 1000 # density of water (to convert from SWE to mass)
 
-D0 = np.genfromtxt('Ds/d0.tmp.txt') # read in coordinates of output grid
+D0 = np.genfromtxt('../Outputs/%s/create_Ds/Ds/d0.tmp.txt' % SimName) # read in coordinates of output grid
 
 #defms = np.zeros((len(D0),1,len(X))) # initiate deformations matrix
 finaldefm = np.zeros((len(D0)))
@@ -65,7 +67,7 @@ for i in range(len(X)):
     # Loop over each mass in turn, and calculate the deformation due to that mass
     if (X[i,2]!= 0.) & (not np.isnan(X[i,2])):
         print('Calculating defm due to mass %i' % i)
-        D = np.fromfile('Ds/d%i.tmp.float' % i,dtype='f4') # Read in the distances file
+        D = np.fromfile('../Outputs/%s/create_Ds/Ds/d%i.tmp.float' % (SimName,i),dtype='f4') # Read in the distances file
         G = calc_G(lamda,mu,alpha,1000*D) # Calculate G for each distance
         
         Mass = (2*alpha) **2 * X[i,2] * rho_water # Calculate the masses for the snow cell
@@ -81,4 +83,4 @@ finaldefm = finaldefm.flatten() # Sum all the deformations
 
 finaldfm_numpyarray = np.column_stack((D0[:,0],D0[:,1],finaldefm)) # Create an array to be outputted
 print('Saving output deformation from Python script. May take a while for large output grids.')
-np.savetxt('outputDeformation.tmp.txt',finaldfm_numpyarray) # Save the result.
+np.savetxt('../Outputs/%s/outputDeformation.txt' % SimName,finaldfm_numpyarray) # Save the result.

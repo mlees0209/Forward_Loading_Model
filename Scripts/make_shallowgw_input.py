@@ -10,12 +10,17 @@
 from fastkml import kml
 import numpy as np
 import os
+import sys 
 
-regionalpolygon='../Polygons/Kings_River_Polygon.kml'
-gwpolygon='../Polygons/gwpolygon.kml'
-grdsize='1k'
-headchange=2 # in metres
-specific_yield=0.2
+regionalpolygon=sys.argv[3]
+headchange=float(sys.argv[2]) # in metres
+gwpolygon=sys.argv[1]
+grdsize=sys.argv[4]
+specific_yield=float(sys.argv[5])
+simname=sys.argv[6]
+
+cmd='mkdir ../Outputs/'+simname+'/make_shallowgw_input'
+os.system(cmd)
 
 def import_kml_polygon(filename):
     '''import a single .kml polygon created in Google Earth. Should work in simple cases.......'''
@@ -43,13 +48,15 @@ def import_kml_polygon(filename):
     
     return Polylon, Polylat
 
-largeregion=import_kml_polygon(regionalpolygon)
-reg="-R%.3f/%.3f/%.3f/%.3f" % (np.min(largeregion[0]),np.max(largeregion[0]),np.min(largeregion[1]),np.max(largeregion[1]))
+largeregion=import_kml_polygon('../Polygons/'+regionalpolygon)
+reg="-R%.9f/%.9f/%.10f/%.10f" % (np.min(largeregion[0]),np.max(largeregion[0]),np.min(largeregion[1]),np.max(largeregion[1]))
 
-cmd="gmt kml2gmt "+gwpolygon+" > gwpoly.tmp"
+print('Region of investigation found to be %s' % reg)
+
+cmd="gmt kml2gmt ../Polygons/"+gwpolygon+" > ../Outputs/"+simname+"/make_shallowgw_input/gwpoly.tmp"
 print(cmd)
 ret=os.system(cmd)
 
-cmd="gmt grdmask gwpoly.tmp -GSWE_change.grd %s -I%s -N0/0/%.2f" % (reg, grdsize, headchange*specific_yield)
+cmd="gmt grdmask ../Outputs/%s/make_shallowgw_input/gwpoly.tmp -G../Outputs/%s/make_shallowgw_input/shallow_gw_change.grd %s -I%s -N0/0/%.2f -rp -V" % (simname,simname,reg, grdsize, headchange*specific_yield)
 print(cmd)
 ret=os.system(cmd)
