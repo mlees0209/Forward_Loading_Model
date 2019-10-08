@@ -1,6 +1,6 @@
 # This Python script is the masterscript, which should be used to run any Snow Forward Model. 
 # 
-# LAST UPDATED: Oct 7th 2019.
+# LAST UPDATED: Oct 8nd 2019
 #
 # The script has three sections. The first sets general parameters for your run, whilst the second and third are specific subsections depending on general options selected.
 #
