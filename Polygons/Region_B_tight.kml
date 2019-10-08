@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Region_B_tight.kml</name>
+	<Style id="sn_placemark_circle">
+		<IconStyle>
+			<color>0dffffff</color>
+			<scale>0.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+		<LineStyle>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="msn_placemark_circle">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_placemark_circle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_placemark_circle_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_placemark_circle_highlight">
+		<IconStyle>
+			<color>0dffffff</color>
+			<scale>0.236364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+		<LineStyle>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Region_B_tight</name>
+		<open>1</open>
+		<styleUrl>#msn_placemark_circle</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-120.4625413829884,37.78221657267387,0 -120.5267472282405,37.79033915792521,0 -120.601278243439,37.80537143145221,0 -120.6181659830782,37.74753909653383,0 -120.5475807515632,37.70599101516258,0 -120.5431813375305,37.62690364127744,0 -120.4675415249324,37.61480290422894,0 -120.45400979249,37.56758415801963,0 -120.430721529674,37.50359748119735,0 -120.3902782959639,37.44415580123866,0 -120.3701803469288,37.36668293974482,0 -120.3083845688732,37.29693536933074,0 -120.2069144029991,37.22661022843408,0 -120.1145630431647,37.20581925664823,0 -120.0706629689684,37.32605696066048,0 -120.2454113004522,37.58208986636435,0 -120.4625413829884,37.78221657267387,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

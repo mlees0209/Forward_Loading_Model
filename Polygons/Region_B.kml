@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Region_B.kml</name>
+	<Style id="sh_placemark_circle_highlight">
+		<IconStyle>
+			<color>0dffffff</color>
+			<scale>0.236364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_placemark_circle">
+		<IconStyle>
+			<color>0dffffff</color>
+			<scale>0.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_placemark_circle">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_placemark_circle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_placemark_circle_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Region B</name>
+		<styleUrl>#msn_placemark_circle</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-120.3025728790097,37.75484175360103,0 -120.5174319388319,37.91038205284472,0 -120.6372942777046,37.87864839703324,0 -120.6915043896792,37.84021472288921,0 -120.6812051780846,37.59858211929485,0 -120.5115181389519,37.40480288624261,0 -120.4197479802451,37.26727658505377,0 -120.2973267909727,37.11682469886448,0 -120.1824613709893,37.00354946319471,0 -120.0625247318171,36.94649159408456,0 -119.9273927352043,36.90502270530221,0 -119.7510875261832,36.97817672981382,0 -119.7540254774007,37.08038759443117,0 -119.992537789809,37.37557010205587,0 -120.143270181702,37.57538727142202,0 -120.3025728790097,37.75484175360103,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>
